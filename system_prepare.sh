@@ -7,8 +7,8 @@ if ! [[ -x `which git` ]]; then
     exit 1
 fi
 
-if ! [[ -x `which openssl` ]]; then
-    echo "Error: OpenSSL command line utility is necessary for this script" >&2
+if ! [[ -x $PYTHONBIN ]]; then
+    echo "Error: Python command line utility is necessary for this script" >&2
     exit 1
 fi
 
