@@ -1,10 +1,10 @@
-Test scripts for OpenSSL implementation.
+Test scripts for GnuTLS implementation.
 
 ## Required
 
 The following packages are required for the script to run.
 
-    General: git python golang
+    General: git gcc gcc-c++ python nss nss-tools gnutls-dev[el]
 
 You will need to install those packages manually
 
@@ -17,12 +17,12 @@ All scripts should be run from the root of the minerva-toolkit directory
 1) Run the `system_prepare.sh`, make sure that you have `git` and `python`
 already installed in your system.
 
-2) Run the gatherer script for the Golang component. The default dir is
+2) Run the gatherer script for the GnuTLS component. The default dir is
 `/minerva-results`. To see all available script options please use
-`./components/openssl/gatherer.sh --help`
+`./components/gnutls/gatherer.sh --help`
 
 ```bash
-./components/openssl/gatherer.sh --gatherer components/openssl/time_sign_golang.go
+./components/gnutls/gatherer.sh --gatherer components/gnutls/time_sign_gnutls.c
 ```
 
 The gatherer by default will create 4 measurements files: measurements.csv

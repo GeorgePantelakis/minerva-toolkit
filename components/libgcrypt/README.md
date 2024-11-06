@@ -1,10 +1,12 @@
-Test scripts for OpenSSL implementation.
+Test scripts for libgcrypt implementation.
 
 ## Required
 
 The following packages are required for the script to run.
 
-    General: git python golang
+    General: git gcc gcc-c++ python
+    For non-static: libgcrypt-dev[el]
+    For static: autoconf libtool texinfo gettext-dev[el] transfig glibc-static
 
 You will need to install those packages manually
 
@@ -17,12 +19,12 @@ All scripts should be run from the root of the minerva-toolkit directory
 1) Run the `system_prepare.sh`, make sure that you have `git` and `python`
 already installed in your system.
 
-2) Run the gatherer script for the Golang component. The default dir is
+2) Run the gatherer script for the libgcrypt component. The default dir is
 `/minerva-results`. To see all available script options please use
-`./components/openssl/gatherer.sh --help`
+`./components/libgcrypt/gatherer.sh --help`
 
 ```bash
-./components/openssl/gatherer.sh --gatherer components/openssl/time_sign_golang.go
+./components/libgcrypt/gatherer.sh --gatherer components/libgcrypt/time_sign_libgcrypt.c [--static]
 ```
 
 The gatherer by default will create 4 measurements files: measurements.csv
@@ -44,3 +46,13 @@ PYTHONPATH=tlsfuzzer minerva-venv/bin/python tlsfuzzer/tlsfuzzer/combine.py \
 
 For more info read the [Analysis](minerva-toolkit/blob/main/docs/Analysis.md)
 documentation
+
+Analysis of the Hamming weight of the inverted bit value. For bit size analysis
+we just use measurements-hamming-weight.csv file (or leave it by default if the
+data were combined and the name of the combined file is measurements.csv)
+
+```bash
+PYTHONPATH=tlsfuzzer minerva-venv/bin/python tlsfuzzer/tlsfuzzer/analysis.py \
+    --Hamming-weight --verbose -o dir-with-measurements/ \
+    --measurements measurements-hamming-weight-invert.csv
+```

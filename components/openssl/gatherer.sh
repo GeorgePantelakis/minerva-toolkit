@@ -7,7 +7,7 @@ COMPONENT="openssl"
 SAMPLES=1000000
 RESULTS_DIR="/minerva-results"
 STATIC=false
-GATHERER="time_sign_openssl.c"
+GATHERER="components/openssl/time_sign_openssl.c"
 CPU=""
 
 _EXTRA_EXTRACT_FLAGS=""
@@ -105,7 +105,11 @@ echo
     esac
 done
 
-mkdir -p $RESULTS_DIR
+if [[ -d $RESULTS_DIR ]]; then
+    rm -rf $RESULTS_DIR/*
+else
+    mkdir -p $RESULTS_DIR
+fi
 
 if [[ $STATIC == true ]]; then
     if ! [[ -d "openssl" ]]; then
@@ -113,7 +117,7 @@ if [[ $STATIC == true ]]; then
         pushd openssl
         echo "[i] Building openssl..."
         ./Configure enable-ec_nistp_64_gcc_128 no-shared
-        make > $RESULTS_DIR/openssl_make.log
+        make -j$(nproc --all || echo '1') &> $RESULTS_DIR/openssl_make.log
         if [ $? -ne 0 ]; then
             echo "Couldn't build openssl. See make logs in $RESULTS_DIR/openssl_make.log"
             exit 1

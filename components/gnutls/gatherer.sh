@@ -3,19 +3,14 @@
 . ./scripts/get_freq.sh
 
 CURVE="NIST256p"
-COMPONENT="golang"
+COMPONENT="gnutls"
 SAMPLES=1000000
 RESULTS_DIR="/minerva-results"
-GATHERER="components/golang/time_sign_golang.go"
+GATHERER="components/gnutls/time_sign_gnutls.c"
 CPU=""
 
-_EXTRA_EXTRACT_FLAGS="--prehashed "
+_EXTRA_EXTRACT_FLAGS=""
 _PYTHONBIN="./minerva-venv/bin/python"
-
-if ! [[ -x `which go` ]]; then
-    echo "Error: Golang command line utility is necessary for this script" >&2
-    exit 1
-fi
 
 if ! [[ -d "minerva-venv" ]]; then
     echo "Error: Please first run system_prepare.sh" >&2
@@ -30,7 +25,7 @@ echo "-c, --curve str       Curve to be tested. Choose from NIST256p,"
 echo "                      NIST384p or NIST521p."
 echo "                          Default $CURVE"
 echo "-s, --samples num     Number of samples per run per core."
-echo "                          Default $CURVE"
+echo "                          Default $SAMPLES"
 echo "--dir dir             Custom dir to use for the results."
 echo "                          Default $RESULTS_DIR"
 echo "--gatherer path       Use a custom gatherer."
@@ -104,9 +99,6 @@ if [[ -d $RESULTS_DIR ]]; then
 else
     mkdir -p $RESULTS_DIR
 fi
-
-GOLANG_VERSION=$(go version)
-echo "Tesing Golang version $GOLANG_VERSION"
 
 echo "[i] Getting frequency of the machine..."
 TSC_FREQUENCY="$(get_freq)"
