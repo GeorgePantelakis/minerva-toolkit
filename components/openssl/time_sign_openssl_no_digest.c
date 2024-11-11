@@ -127,7 +127,8 @@ int main(int argc, char *argv[]) {
     int in_fd = -1, out_fd = -1, time_fd = -1;
     int opt;
     int result = 1, r_ret;
-    size_t data_size = 32, sig_len = 0, sig_len_max = 512;
+    size_t data_size = 32;
+    unsigned int sig_len = 0, sig_len_max = 512;
     unsigned char *data = NULL, *sig = NULL;
     EVP_PKEY *evp_pkey = NULL;
     EC_KEY *pkey = NULL;
