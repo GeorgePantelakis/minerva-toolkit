@@ -54,5 +54,5 @@ PYTHONPATH=tlsfuzzer minerva-venv/bin/python tlsfuzzer/tlsfuzzer/analysis.py \
 
 ### Interpreting the results
 
-please check
-https://tlsfuzzer.readthedocs.io/en/latest/timing-analysis.html#interpreting-the-results
+Please check
+[tlsfuzzer docs](https://tlsfuzzer.readthedocs.io/en/latest/timing-analysis.html#interpreting-the-results)

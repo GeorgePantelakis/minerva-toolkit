@@ -44,15 +44,5 @@ PYTHONPATH=tlsfuzzer minerva-venv/bin/python tlsfuzzer/tlsfuzzer/combine.py \
 
 ## Analyzing data
 
-For more info read the [Analysis](minerva-toolkit/blob/main/docs/Analysis.md)
-documentation
-
-Analysis of the Hamming weight of the inverted bit value. For bit size analysis
-we just use measurements-hamming-weight.csv file (or leave it by default if the
-data were combined and the name of the combined file is measurements.csv)
-
-```bash
-PYTHONPATH=tlsfuzzer minerva-venv/bin/python tlsfuzzer/tlsfuzzer/analysis.py \
-    --Hamming-weight --verbose -o dir-with-measurements/ \
-    --measurements measurements-hamming-weight-invert.csv
-```
+For more info read the
+[analysis documentation](https://github.com/GeorgePantelakis/minerva-toolkit/blob/main/docs/Analysis.md)

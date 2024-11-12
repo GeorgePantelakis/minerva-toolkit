@@ -42,5 +42,5 @@ PYTHONPATH=tlsfuzzer minerva-venv/bin/python tlsfuzzer/tlsfuzzer/combine.py \
 
 ## Analyzing data
 
-For more info read the [Analysis](minerva-toolkit/blob/main/docs/Analysis.md)
-documentation
+For more info read the
+[analysis documentation](https://github.com/GeorgePantelakis/minerva-toolkit/blob/main/docs/Analysis.md)
