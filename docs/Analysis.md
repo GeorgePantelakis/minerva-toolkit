@@ -51,3 +51,8 @@ PYTHONPATH=tlsfuzzer minerva-venv/bin/python tlsfuzzer/tlsfuzzer/analysis.py \
     --Hamming-weight --verbose -o dir-with-measurements/ \
     --measurements measurements-hamming-weight-invert.csv
 ```
+
+### Interpreting the results
+
+please check
+https://tlsfuzzer.readthedocs.io/en/latest/timing-analysis.html#interpreting-the-results
